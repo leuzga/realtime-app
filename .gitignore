@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+.claude/
+*.log
+cypress/videos/
+cypress/screenshots/
+Homework.pdf

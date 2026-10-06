@@ -1,0 +1,46 @@
+# E2E Testing stack with Cypress
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      target: backend-dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - PORT=4000
+      - NODE_COUNT=250
+      - TICK_MS=250
+      - UPDATE_RATIO=0.3
+
+  frontend:
+    build:
+      context: .
+      target: frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+
+  e2e:
+    image: cypress/included:13.17.0
+    working_dir: /e2e
+    command: npx cypress run
+    volumes:
+      - ./frontend:/e2e
+      - ./frontend/cypress:/e2e/cypress
+    environment:
+      - CYPRESS_baseUrl=http://frontend:3000
+    depends_on:
+      - frontend
+    networks:
+      - default

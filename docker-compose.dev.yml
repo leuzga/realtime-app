@@ -1,0 +1,31 @@
+# Dev stack with hot reload: `docker compose -f docker-compose.dev.yml up --build`
+services:
+  backend:
+    build:
+      context: .
+      target: backend-dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - PORT=4000
+      - NODE_COUNT=250
+      - TICK_MS=250
+      - UPDATE_RATIO=0.3
+
+  frontend:
+    build:
+      context: .
+      target: frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - BACKEND_URL=http://backend:4000
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
