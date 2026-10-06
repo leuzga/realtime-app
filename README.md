@@ -104,29 +104,41 @@ realtime-app/
 
 ---
 
-## Quick Commands
+## Docker Setup & Testing
+
+### Start Application
 
 ```bash
-# Start all services
-docker-compose up -d
+# Build and start all services (frontend + backend)
+docker-compose up
+
+# Application will be accessible at:
+# - Frontend: http://localhost:3000
+# - Backend WebSocket: ws://localhost:4000/ws
+# - Health check: http://localhost:4000/health
+```
+
+### Run Tests
+
+```bash
+# Unit tests (Jest/React Testing Library)
+docker-compose exec frontend npm run test
+docker-compose exec backend npm test
+
+# TypeScript type checking
+docker-compose exec frontend npm run typecheck
+docker-compose exec backend npm run typecheck
+
+# E2E tests (Cypress)
+docker-compose exec frontend npm run e2e:run
 
 # View logs
 docker-compose logs -f frontend
 docker-compose logs -f backend
 
-# Run tests
-docker-compose exec frontend npm run typecheck
-docker-compose exec frontend npm run test
-docker-compose exec backend npm test
-
-# Run E2E tests
-docker-compose exec frontend npm run e2e:run
-
 # Stop services
 docker-compose down
-
-# Full cleanup (remove volumes)
-docker-compose down -v
+docker-compose down -v  # Full cleanup with volumes
 ```
 
 ---
