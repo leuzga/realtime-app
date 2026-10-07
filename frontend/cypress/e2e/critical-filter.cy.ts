@@ -45,10 +45,13 @@ describe('Filter Nodes by Critical Status', () => {
 
     // Badge should have numeric count
     cy.contains('CRITICAL').then(($el) => {
+      if (!$el) return;
       const text = $el.text();
       const match = text.match(/\((\d+)\)/);
       expect(match).to.exist;
-      expect(parseInt(match![1])).to.be.greaterThan(0);
+      if (match) {
+        expect(parseInt(match[1])).to.be.greaterThan(0);
+      }
     });
   });
 });

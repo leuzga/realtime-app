@@ -12,7 +12,7 @@ export const useNodeGrid = () => {
   const deferredFilter = useDeferredValue(filter);
   const deferredSort = useDeferredValue(sort);
 
-  const nodes = filterAndSort(state.nodes.values(), deferredFilter, deferredSort, order);
+  const nodes = filterAndSort(state.nodes, deferredFilter, deferredSort, order);
 
   return {
     nodes,
