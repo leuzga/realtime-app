@@ -44,8 +44,8 @@ describe('Filter Nodes by Critical Status', () => {
       .and('contain', ')');
 
     // Badge should have numeric count
-    cy.contains('CRITICAL').then(($el) => {
-      if (!$el) return;
+    cy.contains('CRITICAL').then(($el: any) => {
+      if (!$el || !$el.text) return;
       const text = $el.text();
       const match = text.match(/\((\d+)\)/);
       expect(match).to.exist;

@@ -10,9 +10,9 @@ export const extractMetrics = (data: TelemetryData): Metrics => ({
 });
 
 /** Pure transformation: enrich telemetry with derived status */
-export const enrichWithStatus = (data: Omit<TelemetryData, 'status'>): TelemetryData => ({
+export const enrichWithStatus = (data: { nodeId: string; cpuLoad: number; memoryUsage: number; latency: number; timestamp: number }): TelemetryData => ({
   ...data,
-  status: deriveStatus(extractMetrics(data))
+  status: deriveStatus(extractMetrics(data as TelemetryData))
 });
 
 /** Pure transformation: validate bounds on metrics */
@@ -49,7 +49,7 @@ export const mapTelemetry =
 /** Compose enrichStatus with clamp: enrich -> clamp metrics -> status */
 export const enrichAndClamp = compose(
   (data: Omit<TelemetryData, 'status'>) =>
-    enrichWithStatus({ ...data, status: 'OK' as const }),
-  (metrics: Metrics & { nodeId: string; timestamp: number }) =>
-    ({ ...metrics, ...clampMetrics(metrics) } as any)
+    enrichWithStatus(data),
+  (metrics: Omit<TelemetryData, 'status'>) =>
+    ({ ...metrics, ...clampMetrics(metrics) } as Omit<TelemetryData, 'status'>)
 );
