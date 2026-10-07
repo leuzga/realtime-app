@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getStore } from '../application/store.js';
+import { useFleetAlert } from '../application/useFleetAlert.js';
 import { createWsClient } from '../infrastructure/wsClient.js';
+import { AlertBanner } from './dashboard/AlertBanner.js';
 import { NodeChart } from './NodeChart.js';
 import { NodeGrid } from './NodeGrid.js';
 import { MetricsOverview } from './MetricsOverview.js';
@@ -50,6 +52,7 @@ const renderHeader = (wsStatus: string) => (
 export const App = () => {
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [wsStatus, setWsStatus] = useState('connecting');
+  const alert = useFleetAlert();
 
   useEffect(() => {
     const unsubWs = createWsClient({
@@ -64,6 +67,8 @@ export const App = () => {
   return (
     <div style={{ padding: 'var(--size-lg)', maxWidth: '1400px', margin: '0 auto' }}>
       {renderHeader(wsStatus)}
+
+      <AlertBanner alert={alert} />
 
       <div style={{ marginBottom: 'var(--size-xl)' }}>
         <h2 style={{ fontSize: '14px', marginTop: 0, marginBottom: 'var(--size-md)', opacity: 0.8, fontWeight: 'var(--weight-medium)' }}>
