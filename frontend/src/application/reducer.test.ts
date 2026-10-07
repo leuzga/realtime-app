@@ -29,4 +29,38 @@ describe('reducer', () => {
     for (let i = 0; i < 100; i += 1) state = reduceBatch(state, [{ ...node('x'), timestamp: i }]);
     expect(state.history.length).toBe(60);
   });
+
+  it('initializes statusSince on snapshot', () => {
+    const state = reduceSnapshot(initState(), [node('a'), node('b')]);
+    expect(state.statusSince.size).toBe(2);
+    expect(state.statusSince.get('a')).toBe(1);
+    expect(state.statusSince.get('b')).toBe(1);
+  });
+
+  it('updates statusSince when status changes', () => {
+    let state = reduceSnapshot(initState(), [node('a')]);
+    expect(state.statusSince.get('a')).toBe(1);
+
+    state = reduceBatch(state, [{ ...node('a'), status: 'WARNING' as const, timestamp: 100 }]);
+    expect(state.statusSince.get('a')).toBe(100);
+  });
+
+  it('preserves statusSince when status unchanged', () => {
+    let state = reduceSnapshot(initState(), [node('a')]);
+    state = reduceBatch(state, [{ ...node('a'), cpuLoad: 50, timestamp: 100 }]);
+    expect(state.statusSince.get('a')).toBe(1);
+  });
+
+  it('maintains chronological order in history after wrap', () => {
+    let state = reduceSnapshot(initState(), [{ ...node('x'), timestamp: 0 }]);
+    for (let i = 1; i < 70; i += 1) {
+      state = reduceBatch(state, [{ ...node('x'), timestamp: i }]);
+    }
+
+    expect(state.history.length).toBe(60);
+    const timestamps = state.history.map((frame) => frame[0]?.timestamp ?? -1);
+    for (let i = 1; i < timestamps.length; i += 1) {
+      expect(timestamps[i]).toBeGreaterThanOrEqual(timestamps[i - 1]);
+    }
+  });
 });
