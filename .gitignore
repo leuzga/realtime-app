@@ -16,13 +16,8 @@ build/
 .env.local
 .env.*.local
 
-# Local development docs (kept for reference only)
-ARCHITECTURE.md
-CYPRESS_README.md
-GUIA_INSTALACION.md
-PERFORMANCE_AUDIT.md
-REQUIREMENTS_CHECKLIST.md
-documents/ARQUITECTURA_CODIGO.md
+# Local Spanish documentation (not versioned)
+documents/GUIA_INSTALACION.md
 documents/ARQUITECTURA_SISTEMA.md
 
 # IDE

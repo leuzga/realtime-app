@@ -369,11 +369,10 @@ docker stats
 
 ## Next Steps
 
-1. **Explore the Code**: See [CODE_ARCHITECTURE.md](./documents/CODE_ARCHITECTURE.md)
-2. **Understand the Design**: See [SYSTEM_ARCHITECTURE.md](./documents/SYSTEM_ARCHITECTURE.md)
-3. **Run Tests**: `docker-compose exec frontend npm run e2e:run`
-4. **Make Changes**: Edit any file in `frontend/src` or `backend/src`
-5. **View Logs**: `docker-compose logs -f`
+1. **Understand the Design**: See [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md)
+2. **Run Tests**: `docker-compose exec frontend npm run e2e:run`
+3. **Make Changes**: Edit any file in `frontend/src` or `backend/src`
+4. **View Logs**: `docker-compose logs -f`
 
 ---
 
@@ -392,4 +391,4 @@ docker stats
 
 ---
 
-**Having issues?** Check the Troubleshooting section above, or see [REQUIREMENTS_CHECKLIST.md](./REQUIREMENTS_CHECKLIST.md) for comprehensive project status.
+**Having issues?** Check the Troubleshooting section above for common solutions.

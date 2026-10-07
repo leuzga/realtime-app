@@ -36,7 +36,7 @@ ws://localhost:4000/ws
 curl http://localhost:4000/health
 ```
 
-**Full installation instructions**: See [INSTALLATION_GUIDE.md](./INSTALLATION_GUIDE.md) for detailed setup, testing, and troubleshooting.
+**Full installation instructions**: See [INSTALLATION_GUIDE.md](./documents/INSTALLATION_GUIDE.md) for detailed setup, testing, and troubleshooting.
 
 ---
 
@@ -77,14 +77,11 @@ realtime-app/
 ├── docker-compose.dev.yml      # Dev stack: frontend + backend
 ├── Dockerfile                   # Multi-stage build
 ├── README.md                    # This file
-├── INSTALLATION_GUIDE.md        # Setup & troubleshooting
-├── GUIA_INSTALACION.md          # Spanish installation guide
-├── REQUIREMENTS_CHECKLIST.md    # Full requirements audit
 ├── documents/                   # Architecture documentation
-│   ├── SYSTEM_ARCHITECTURE.md   # System design (English)
-│   ├── ARQUITECTURA_SISTEMA.md  # System design (Spanish)
-│   ├── CODE_ARCHITECTURE.md     # Code structure (English)
-│   └── ARQUITECTURA_CODIGO.md   # Code structure (Spanish)
+│   ├── SYSTEM_ARCHITECTURE.md   # System design & technology decisions
+│   ├── INSTALLATION_GUIDE.md    # Setup & troubleshooting
+│   ├── REQUIREMENTS_CHECKLIST.md # Full requirements audit
+│   └── PERFORMANCE_AUDIT.md     # Performance analysis
 ├── frontend/                    # React application
 │   ├── src/
 │   │   ├── application/         # State management (pure functions)
@@ -147,12 +144,10 @@ docker-compose down -v  # Full cleanup with volumes
 
 | Document | Purpose |
 |----------|---------|
-| [INSTALLATION_GUIDE.md](./INSTALLATION_GUIDE.md) | Complete setup, testing, troubleshooting (English) |
-| [GUIA_INSTALACION.md](./GUIA_INSTALACION.md) | Complete setup, testing, troubleshooting (Spanish) |
 | [SYSTEM_ARCHITECTURE.md](./documents/SYSTEM_ARCHITECTURE.md) | Technology decisions, data flow, scalability plan |
-| [CODE_ARCHITECTURE.md](./documents/CODE_ARCHITECTURE.md) | File structure, functional programming paradigm |
-| [REQUIREMENTS_CHECKLIST.md](./REQUIREMENTS_CHECKLIST.md) | Full PDF requirements audit (35/38 complete) |
-| [PERFORMANCE_AUDIT.md](./PERFORMANCE_AUDIT.md) | Performance analysis + optimizations |
+| [INSTALLATION_GUIDE.md](./documents/INSTALLATION_GUIDE.md) | Complete setup, testing, troubleshooting |
+| [REQUIREMENTS_CHECKLIST.md](./documents/REQUIREMENTS_CHECKLIST.md) | Full requirements audit |
+| [PERFORMANCE_AUDIT.md](./documents/PERFORMANCE_AUDIT.md) | Performance analysis + optimizations |
 
 ---
 
@@ -198,10 +193,9 @@ docker-compose down -v  # Full cleanup with volumes
 
 ## Getting Help
 
-**Installation issues**: See [INSTALLATION_GUIDE.md](./INSTALLATION_GUIDE.md) → Troubleshooting section  
-**Architecture questions**: See [documents/](./documents/) folder (EN + ES)  
-**Test failures**: See [CYPRESS_README.md](./CYPRESS_README.md) for E2E test setup  
-**Code structure**: See [CODE_ARCHITECTURE.md](./documents/CODE_ARCHITECTURE.md)  
+**Installation issues**: See [INSTALLATION_GUIDE.md](./documents/INSTALLATION_GUIDE.md) → Troubleshooting section  
+**Architecture questions**: See [SYSTEM_ARCHITECTURE.md](./documents/SYSTEM_ARCHITECTURE.md) (EN + ES)  
+**Test failures**: See [CYPRESS_README.md](./documents/CYPRESS_README.md) for E2E test setup  
 
 ---
 
@@ -211,4 +205,4 @@ This is a take-home assignment project. For submission instructions and anonymit
 
 ---
 
-**Ready to deploy?** Follow the [installation guide](./INSTALLATION_GUIDE.md) for step-by-step setup instructions.
+**Ready to deploy?** Follow the [installation guide](./documents/INSTALLATION_GUIDE.md) for step-by-step setup instructions.
