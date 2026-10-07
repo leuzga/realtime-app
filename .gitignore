@@ -1,9 +1,48 @@
+# Dependencies
 node_modules/
-dist/
+.pnp
+.pnp.js
+
+# Testing
 coverage/
+.nyc_output/
+
+# Build
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Local development docs (kept for reference only)
+ARCHITECTURE.md
+CYPRESS_README.md
+GUIA_INSTALACION.md
+PERFORMANCE_AUDIT.md
+REQUIREMENTS_CHECKLIST.md
+documents/ARQUITECTURA_CODIGO.md
+documents/ARQUITECTURA_SISTEMA.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
-.claude/
+Thumbs.db
+
+# Logs
+logs/
 *.log
-cypress/videos/
-cypress/screenshots/
-Homework.pdf
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+# Docker
+docker-compose.override.yml
